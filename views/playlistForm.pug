@@ -1,0 +1,21 @@
+extends layout
+block content
+    - var formMethod = '/admin/newPlaylist'
+    - var playlistName = ''
+    
+    if playlist
+      - formMethod = '/admin/editPlaylist'
+      - playlistName = playlist.playlist
+    
+    div.row.playlistForm
+      div.col-sm-8.col-sm-offset-2
+        form.form-horizontal(method='POST', action='/admin/newPlaylist')
+          div.form-group
+            label.col-sm-3(for='thePlaylist') Enter your playlist
+            div.col-sm-9
+              textarea#thePlaylist.form-control(name='thePlaylist') #{playlistName}
+              if playlist
+                input(type='hidden', name='id', value=playlist.id)
+          div.form-group
+            div.col-sm-1.col-sm-offset-3
+              input.btn.btn-default(type='submit', name='Add')

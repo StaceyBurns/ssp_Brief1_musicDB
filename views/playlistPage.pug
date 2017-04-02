@@ -1,0 +1,10 @@
+extends layout
+block content
+    
+    div
+        h1 My playlist ID blablabla change this
+    div
+        for audioClip, i in audio
+          div
+              p Link 
+                a(href='http://'+audioClip.url) #{audioClip.name}

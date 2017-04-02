@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+        div
+            h1 Create an Account
+            form(method='POST', action='/signup')
+                p FIRST NAME
+                input(type='text', name='newFname')
+                br 
+                p EMAIL
+                input(type='text', name='newUsername')
+                br
+                p PASSWORD
+                input(type='password', name='newPassword')
+                br 
+                input(type='submit', value='Submit')
+                p Already have an account?
+                a(href='login') Log in

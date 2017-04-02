@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+        div
+            h1 Please log in
+            form(method='POST', action='/login')
+                p EMAIL
+                input(type='text', name='username')
+                p PASSWORD
+                input(type='password', name='password')
+                br 
+                input(type='submit', value='log in')
+                p Don't have an account?
+                a(href='signup') Sign up
+                //-input(type='submit', value='Sign Up')
