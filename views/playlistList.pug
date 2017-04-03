@@ -6,7 +6,7 @@ block content
         h1 My Playlists
     div.row
       div.col-sm-2.col-sm-offset-10
-        a(href='/admin/createPlaylist') Create a new playlist
+        a(href='/createPlaylist') Create a new playlist
     div.row
       div.col-sm-12
         for playlist, i in playlists
@@ -15,9 +15,9 @@ block content
               p 
                 small #{new Date(playlist.date).toLocaleDateString()}
               p 
-                a(href='/admin/playlist' +playlist.id) #{playlist.text}
+                a(href='/playlist' +playlist.id) #{playlist.text}
           div.row
             div.col-sm-1.col-sm-offset-2
-              a(href='/admin/delete/' +playlist.id) Delete
+              a(href='/delete/' +playlist.id) Delete
             div.col-sm-1
-              a(href='/admin/edit?id=' +playlist.id) Edit
+              a(href='/edit?id=' +playlist.id) Edit

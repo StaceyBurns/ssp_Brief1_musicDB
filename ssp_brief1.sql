@@ -31,8 +31,7 @@ foreign key (audioLinks_playlistId) references playlists(playlistId)
 create table audioLinksInPlaylists(
 audioLinksInPlaylists_AudioId int,
 audioLinksInPlaylists_playlistId int,
-foreign key (audioLinksInPlaylists_AudioId) references audioLinks(audioId),
-foreign key (audioLinksInPlaylists_playlistId) references playlists(playlistId)
+foreign key (audioLinksInPlaylists_AudioId) references audioLinks(audioId)
 );
 
 create table jokes(

@@ -1,0 +1,26 @@
+extends layout
+block content
+    - var formMethod = '/newAudio'
+    - var audioName = ''
+    
+    if playlist
+      - formMethod = '/editAudio'
+      - audioName = audio.audioName
+      - audioName = audio.audioUrl
+    
+    div.row.playlistForm
+      div.col-sm-8.col-sm-offset-2
+        form.form-horizontal(method='POST', action='/newAudio')
+          div.form-group
+            label.col-sm-3(for='theAudio') Enter your playlist
+          div.col-sm-9
+              p Audio Name
+              textarea#thePlaylist.form-control(name='theAudio') #{audioName}
+          div.col-sm-9
+              p Audio URL
+              textarea#thePlaylist.form-control(name='theAudioUrl') #{audioUrl}
+              if playlist
+                input(type='hidden', name='id', value=audio.id)
+          div.form-group
+            div.col-sm-1.col-sm-offset-3
+              input.btn.btn-default(type='submit', name='Add')

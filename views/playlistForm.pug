@@ -1,15 +1,15 @@
 extends layout
 block content
-    - var formMethod = '/admin/newPlaylist'
+    - var formMethod = '/newPlaylist'
     - var playlistName = ''
     
     if playlist
-      - formMethod = '/admin/editPlaylist'
+      - formMethod = '/editPlaylist'
       - playlistName = playlist.playlist
     
     div.row.playlistForm
       div.col-sm-8.col-sm-offset-2
-        form.form-horizontal(method='POST', action='/admin/newPlaylist')
+        form.form-horizontal(method='POST', action='/newPlaylist')
           div.form-group
             label.col-sm-3(for='thePlaylist') Enter your playlist
             div.col-sm-9
