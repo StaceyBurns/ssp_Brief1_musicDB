@@ -1,23 +1,25 @@
 extends layout
 
 block content
-    div.row
-      div.col-sm-12
-        h1 My Playlists
-    div.row
-      div.col-sm-2.col-sm-offset-10
-        a(href='/createPlaylist') Create a new playlist
-    div.row
-      div.col-sm-12
-        for playlist, i in playlists
-          div.row
-            div.col-sm-8.col-sm-offset-2
-              p 
-                small #{new Date(playlist.date).toLocaleDateString()}
-              p 
-                a(href='/playlist' +playlist.id) #{playlist.text}
-          div.row
-            div.col-sm-1.col-sm-offset-2
-              a(href='/delete/' +playlist.id) Delete
-            div.col-sm-1
-              a(href='/edit?id=' +playlist.id) Edit
+      div.row
+        div.col-sm-12
+          h1.h1-white My Playlists
+      div.row
+        div.col-sm-12
+          for playlist, i in playlists
+              div.col-sm-3
+                  div.playlist-box
+                    p 
+                      a.playlist-title(href='/playlist' +playlist.id) #{playlist.text}
+                    p 
+                      small #{new Date(playlist.date).toLocaleDateString()}
+                    p
+                      a.a-white(href='/delete/' +playlist.id) Delete
+                    p
+                      a.a-white(href='/edit?id=' +playlist.id) Edit
+
+      div.row
+        div.col-sm-12
+          button.btn.btnred(type='button') 
+            a.a-white-bold(href='/createPlaylist') Create a new playlist
+      include logout

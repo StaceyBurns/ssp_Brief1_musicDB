@@ -1,19 +1,42 @@
 extends layout
 
-block content
-  h1= title
-        div
-            h1 Create an Account
-            form(method='POST', action='/signup')
-                p FIRST NAME
-                input(type='text', name='newFname')
-                br 
-                p EMAIL
-                input(type='text', name='newUsername')
-                br
-                p PASSWORD
-                input(type='password', name='newPassword')
-                br 
-                input(type='submit', value='Submit')
-                p Already have an account?
-                a(href='login') Log in
+block content    
+  .top-content
+    .inner-bg
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text
+            h1
+              strong Website name
+              |  Playlist website
+            .description
+              p
+                | Make playlists etc etc
+        .row
+          .col-sm-6.col-sm-offset-3.form-box
+            .form-top
+              .form-top-left
+                h3 Create an Account
+            .form-bottom
+              form.login-form(role='form', action='/signup', method='POST')
+                .form-group
+                  label.sr-only(for='form-username') First Name
+                  |  
+                  input#form-username.form-username.form-control(type='text', name='newFname', placeholder='First name...')
+                .form-group
+                  label.sr-only(for='form-username') Email
+                  |  
+                  input#form-username.form-username.form-control(type='text', name='newUsername', placeholder='Email...')
+                .form-group
+                  label.sr-only(for='form-password') Create password
+                  |  
+                  input#form-password.form-password.form-control(type='password', name='newPassword', placeholder='Create password...')
+                |  
+                button.btn.btnred(type='submit' value='log in') Sign in!
+        .row
+          .col-sm-6.col-sm-offset-3.make-account
+            h3 Already have an account?
+        .row
+          .col-sm-6.col-sm-offset-3
+            a(href='login')
+              button.btn.btngrey(type='button') Log in!

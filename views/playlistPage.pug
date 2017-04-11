@@ -1,12 +1,22 @@
 extends layout
 block content
-    
-    div
-        h1 My playlist ID blablabla change this
-    div.col-sm-2.col-sm-offset-10
-        a(href='/createAudio') Add something to playlist
-    div
-        for audioClip, i in audio
+
+    div.row
+        div.col-sm-12
+            h1.h1-white My playlist Name
+        div.col-sm-12
+          button.btn.btnred(type='button') 
+            a.a-white-bold(href='/createAudio') Add a track to your playlist
+    div.row
+        div.col-sm-12.backbtn-ctn
+          a(href='/')
+              button.btn.btngrey(type='button') Back to all playlists  
+    for audioClip, i in audio
           div
-              p Link 
-                a(href='http://'+audioClip.url) #{audioClip.name}
+                a.song-title(href='http://'+audioClip.url) #{audioClip.name}
+
+                iframe.soundcloud(src='https://w.soundcloud.com/player/?url=' + audioClip.url + '&auto_play=false&buying=false&liking=false&download=false&sharing=false&show_artwork=false&show_comments=false&show_playcount=false&hide_related=false&visual=true&start_track=0&callback=true' width='100%' height='180' scrolling='no' frameborder='no')
+    include logout
+
+
+        //-         

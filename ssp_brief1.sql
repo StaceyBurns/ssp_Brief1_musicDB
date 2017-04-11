@@ -14,8 +14,10 @@ create table playlists(
 playlistId int not null auto_increment,
 playlistName varchar(30) not null,
 playlistUserEmail varchar(60),
+playlistUserId int,
 date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 foreign key (playlistUserEmail) references users(email),
+foreign key (playlistUserId) references users(userId),
 Primary key (playlistId)
 );
 
@@ -62,7 +64,7 @@ insert into playlists values('2', 'dance', 'hoi');
 insert into playlists values('3', 'rock', 'hai');
 
 
-
-
+select * from audioLinks;
+select * from users;
 
 

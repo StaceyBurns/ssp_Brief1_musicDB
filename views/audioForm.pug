@@ -1,4 +1,5 @@
 extends layout
+
 block content
     - var formMethod = '/newAudio'
     - var audioName = ''
@@ -7,20 +8,33 @@ block content
       - formMethod = '/editAudio'
       - audioName = audio.audioName
       - audioName = audio.audioUrl
-    
-    div.row.playlistForm
-      div.col-sm-8.col-sm-offset-2
-        form.form-horizontal(method='POST', action='/newAudio')
-          div.form-group
-            label.col-sm-3(for='theAudio') Enter your playlist
-          div.col-sm-9
-              p Audio Name
-              textarea#thePlaylist.form-control(name='theAudio') #{audioName}
-          div.col-sm-9
-              p Audio URL
-              textarea#thePlaylist.form-control(name='theAudioUrl') #{audioUrl}
-              if playlist
-                input(type='hidden', name='id', value=audio.id)
-          div.form-group
-            div.col-sm-1.col-sm-offset-3
-              input.btn.btn-default(type='submit', name='Add')
+
+
+    .top-content
+      .inner-bg
+        .container
+          .row
+            .col-sm-8.col-sm-offset-2.text
+              h1
+                strong Add a new track to playlist name
+          .row
+            .col-sm-6.col-sm-offset-3.form-box
+              .form-top
+                .form-top-left
+                  h3 Add link from soundcloud
+              .form-bottom
+                form.playlist-form(role='form', action='/newAudio', method='POST')
+                  .form-group
+                    label.sr-only(for='form-playlist') Create a new playlist
+                    |  Track name
+                    textarea#form-playlist.form-control(type='text', name='theAudio', placeholder='Track name...') #{audioName}
+                    |  Track URL
+                    textarea#form-playlist.form-control(type='text', name='theAudioUrl', placeholder='Link to track...') #{audioName}
+                    if playlist
+                      input(type='hidden', name='id', value=audio.id)
+                    button.btn.btnred(type='submit' name='add') Add track!
+          div.row
+            div.col-sm-12.backbtn-ctn
+              a(href='/')
+                  button.btn.btngrey(type='button') Cancel 
+    include logout

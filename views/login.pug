@@ -1,8 +1,55 @@
 extends layout
 
 block content
-  h1= title
-        div
+
+
+
+  .top-content
+    .inner-bg
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text
+            h1
+              strong Website name
+              |  Playlist website
+            .description
+              p
+                | Make playlists etc etc
+        .row
+          .col-sm-6.col-sm-offset-3.form-box
+            .form-top
+              .form-top-left
+                h3 Please log in
+                p #{msg}
+            .form-bottom
+              form.login-form(role='form', action='/login', method='POST')
+                .form-group
+                  label.sr-only(for='form-username') Username
+                  |  
+                  input#form-username.form-username.form-control(type='text', name='username', placeholder='Email...')
+                .form-group
+                  label.sr-only(for='form-password') Password
+                  |  
+                  input#form-password.form-password.form-control(type='password', name='password', placeholder='Password...')
+                |  
+                button.btn.btnred(type='submit' value='log in') Sign in!
+        .row
+          .col-sm-6.col-sm-offset-3.make-account
+            h3 Don't have an account yet?
+        .row
+          .col-sm-6.col-sm-offset-3
+            a(href='signup')
+              button.btn.btngrey(type='button') Sign up!
+             
+
+
+ 
+
+
+
+      //-  if (msg.length != 0)
+        -//div.alert.alert-info.text-center(role="alert") #{msg}
+          div
             h1 Please log in
             form(method='POST', action='/login')
                 p EMAIL

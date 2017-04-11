@@ -1,4 +1,5 @@
 extends layout
+
 block content
     - var formMethod = '/newPlaylist'
     - var playlistName = ''
@@ -6,8 +7,48 @@ block content
     if playlist
       - formMethod = '/editPlaylist'
       - playlistName = playlist.playlist
+
+
+    .top-content
+      .inner-bg
+        .container
+          .row
+            .col-sm-8.col-sm-offset-2.text
+              h1
+                strong Create a playlist
+          .row
+            .col-sm-6.col-sm-offset-3.form-box
+              .form-top
+                .form-top-left
+                  h3 Enter playlist name
+              .form-bottom
+                form.playlist-form(role='form', action='/newPlaylist', method='POST')
+                  .form-group
+                    label.sr-only(for='form-playlist') Create a new playlist
+                    |  
+                    textarea#form-playlist.form-control(type='text', name='thePlaylist', placeholder='Playlist name...') #{playlistName}
+                    if playlist
+                      input(type='hidden', name='id', value=playlist.id)
+                    button.btn.btnred(type='submit' name='add') Create playlist!
+          div.row
+            div.col-sm-12.backbtn-ctn
+              a(href='/')
+                  button.btn.btngrey(type='button') Cancel 
+    include logout
+                  
+
+
+
+                //- extends layout
+//-block content
+    - var formMethod = '/newPlaylist'
+    - var playlistName = ''
     
-    div.row.playlistForm
+    if playlist
+      - formMethod = '/editPlaylist'
+      - playlistName = playlist.playlist
+    
+  //-  div.row.playlistForm
       div.col-sm-8.col-sm-offset-2
         form.form-horizontal(method='POST', action='/newPlaylist')
           div.form-group
@@ -19,3 +60,4 @@ block content
           div.form-group
             div.col-sm-1.col-sm-offset-3
               input.btn.btn-default(type='submit', name='Add')
+             

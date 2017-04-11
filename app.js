@@ -29,6 +29,15 @@ var expressSessionOptions = {
 }
 app.use(session(expressSessionOptions));
 
+//var playlistSetup = function(req,res,next){
+  //if(!req.session.allPlaylists){
+    //req.session.allPlaylists = new Array();
+  //}
+  //next();
+//}
+
+//app.use(playlistSetup);
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -39,6 +48,32 @@ app.use(cookieParser());
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+var loggedIn = function(req, res, next) {
+  if ((!req.session.email)) {
+    res.redirect('/login');
+  }
+  else {
+    next();
+  }
+};
+
+app.use('/admin', loggedIn);
+
+
+
+var loggedIn = function(req, res, next) {
+  // Be sure to let the user get to /login without having req.session.username
+  // set, otherwise they would never be able to set it
+  if ((!req.session.username)) {
+    res.redirect('/login');
+  }
+  else {
+    next();
+  }
+};
+
+
 
 //app.use('/admin', loggedIn);
 //app.use('/admin', admin);
