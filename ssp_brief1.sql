@@ -36,35 +36,10 @@ audioLinksInPlaylists_playlistId int,
 foreign key (audioLinksInPlaylists_AudioId) references audioLinks(audioId)
 );
 
-create table jokes(
-id int not null auto_increment,
-text varchar(50) not null,
-date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-Primary key (id)
-);
-
-insert into users values('1', 'email@database.com', 'mypassword', 'Stacey');
-
-
-insert into audioLinks values('1', 'Dance song 1', 'www.staceyburns.net', '1');
-insert into audioLinks values('2', 'Pop song 1', 'www.staceyburns.net', '1');
-insert into audioLinks values('3', 'Rock song 1', 'www.staceyburns.net', '1');
-
-insert into audioLinks values('4', 'Dance song  2', 'www.staceyburns.net', '2');
-insert into audioLinks values('5', 'Pop song 2', 'www.staceyburns.net', '2');
-insert into audioLinks values('6', 'Rock song 2', 'www.staceyburns.net', '2');
-
-insert into audioLinksInPlaylists values('1', '15');
-insert into audioLinksInPlaylists values('2', '15');
-insert into audioLinksInPlaylists values('3', '15');
-
-
-insert into playlists values('1', 'pop', 'hi');
-insert into playlists values('2', 'dance', 'hoi');
-insert into playlists values('3', 'rock', 'hai');
 
 
 select * from audioLinks;
 select * from users;
+select* from playlists;
 
 
